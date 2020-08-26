@@ -1,0 +1,148 @@
+{% extends "info/blank.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-12" style="padding: 18px 21px 2px 21px;">
+    <section>
+      <header class="panel-heading tab-bg-info">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a data-toggle="tab" href="#profile">
+              <i class="icon_profile"></i>Profile
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#edit-profile">
+              <i class="icon_document"></i>Edit Profile
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#change-password">
+              <i class="icon_key"></i>Change Password
+            </a>
+          </li>
+        </ul>
+      </header>
+      <div class="panel-body">
+        <div class="tab-content">
+          <div id="profile" class="tab-pane active">
+            <section class="panel">
+              
+              <div class="panel-body bio-graph-info">
+                <div class="bio-graph-heading" style="
+                box-shadow: 0px 0px 4px 1px rgb(11, 4, 37);
+                background-color: rgba(51, 41, 197, 0.61);">
+                {{request.user.teacher.about}}
+                </div>
+                <h1 style="text-indent: 1%; padding: 25px 0px 0px 20px; text-transform: uppercase;"><b>BioGraphy</b></h1>
+                <div class="row" style=" color: blanchedalmond;">
+                  <div class="bio-row">
+                    <p><span>Username </span>: {{request.user}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>Gender </span>: {{request.user.teacher.sex}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>First Name </span>: {{request.user.teacher.name}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>Birthday</span>: {{request.user.teacher.DOB}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>Address </span>: {{request.user.teacher.address}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>Subject </span>: {{request.user.teacher.subject}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>Salary </span>: {{request.user.teacher.salary}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>Mobile </span>: {{request.user.teacher.phone}}</p>
+                  </div>
+                  <h5 class="form-signin-heading" style="text-align: center;">{{ message }}</h5>
+                </div>
+              </div>
+            </section>
+          </div>
+            <div id="edit-profile" class="tab-pane">
+              <section class="panel">
+                <div class="panel-body bio-graph-info">
+                  <h1 style="text-indent: 1%; text-transform: uppercase;"><b>Profile Info</b></h1>
+                  <form class="form-horizontal" role="form" method="POST" action="{% url 't_update' %}">
+                    <div class="form-group">
+                      <label class="col-lg-2 control-label">Name</label>
+                      <div class="col-lg-6">
+                        <input type="text" class="form-control round-input" name="fname" style="text-transform: capitalize;" placeholder=" ">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-lg-2 control-label">Address</label>
+                      <div class="col-lg-6">
+                        <input type="text" class="form-control round-input" name="address" style="text-transform: capitalize;" placeholder=" ">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-lg-2 control-label">Mobile</label>
+                      <div class="col-lg-6">
+                        <input type="tel"  class="form-control round-input" name="mobile" pattern="[0-9]{11}" placeholder="03333333333">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-lg-2 control-label">About Me</label>
+                      <div class="col-lg-10">
+                        <textarea name="about" class="form-control " cols="30" rows="5"></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-lg-offset-9 col-lg-10" >
+                        <button type="submit" style="padding-left: 5%; border-radius: 20px; padding-right: 5%;" class="btn btn-primary">Save</button>
+                        <button type="button" style="padding-left: 4%; border-radius: 20px; padding-right: 4%;" class="btn btn-default">Cancel</button>
+                      </div>
+                      
+                    </div>
+                  </form>
+                </div>
+              </section>
+            </div>
+            <div id="change-password" class="tab-pane">
+              <section class="panel">
+                <div class="panel-body bio-graph-info">
+                  <h1 style="text-indent: 1%; text-transform: uppercase;"><b>Change Password</b></h1>
+                  <form class="form-horizontal" role="form" method="POST" action="{% url 't_password' %}">
+                    <div class="form-group">
+                      <label class="col-lg-2 control-label">Old Password</label>
+                      <div class="col-lg-6">
+                        <input type="password" class="form-control round-input" name="old_pass" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-lg-2 control-label">New Password</label>
+                      <div class="col-lg-6">
+                        <input type="password"  class="form-control round-input" minlength="8" name="new_pass" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-lg-2 control-label">Confirm Password</label>
+                      <div class="col-lg-6">
+                        <input type="password"  class="form-control round-input" minlength="8" name="conf_pass" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-lg-offset-3 col-lg-10">
+                        <button class="btn btn-default" style="padding-left: 10%; padding-right: 10%;" type="submit">Change 
+                        
+                        </button>
+                        <h5 class="form-signin-heading">{{ message }}</h5>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </section>
+            </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %} 
+      

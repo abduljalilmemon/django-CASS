@@ -1,0 +1,77 @@
+{% extends "info/s_blank.html" %}
+{% block content %}
+<div class="row" >
+    <div class="col-lg-12" > 
+        <div class="tab-content">
+            <section class="panel">
+                <div class="panel-body bio-graph-info">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saturday</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>8:30-9:25</td>
+                                {% for i in time %}
+                                    {% if i.classtime.s_time == s_t %}
+                                        <td>{{i.subject}}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td>9:30-10:25</td>
+                                {% for i in time %}
+                                    {% if i.classtime.s_time == s_t1 %}
+                                        <td>{{i.subject}}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td>10:25-11:00</td>
+                                <td></td>
+                                <td></td>
+                                <td>Break</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>11:00-11:55</td>
+                                {% for i in time %}
+                                    {% if i.classtime.s_time == s_t2 %}
+                                        <td>{{i.subject}}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td>12:00-12:55</td>
+                                {% for i in time %}
+                                    {% if i.classtime.s_time == s_t3 %}
+                                        <td>{{i.subject}}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td>13:00-13:55</td>
+                                {% for i in time %}
+                                    {% if i.classtime.s_time == s_t4 %}
+                                        <td>{{i.subject}}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %} 

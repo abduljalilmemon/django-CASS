@@ -1,0 +1,48 @@
+{% extends "info/s_blank.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <section>
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div class="tab-pane active">
+                        <section class="panel">
+                            <div class="panel-body bio-graph-info">
+                                <h1 style="text-indent: 1%; padding: 10px 0px 0px 20px; color: blanchedalmond; text-transform: uppercase;"><b>Fees</b></h1>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                          <th style="text-align: center;">#</th>
+                                          <th style="text-align: center;">Month</th>
+                                          <th style="text-align: center;">Fee</th>
+                                          <th style="text-align: center;">Due Date</th>
+                                          <th style="text-align: center;">Pay Date</th>
+                                          <th style="text-align: center;">Status</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for i in fee %}
+                                            <tr style="text-align: center;">
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ i.month }}</td>
+                                                <td>{{ i.fee }}</td>
+                                                <td>{{ i.d_date }}</td>
+                                                {% if i.status %}
+                                                    <td>{{ i.pay_date }}</td>
+                                                {% else %}
+                                                    <td></td>
+                                                {% endif %}
+                                                <td>{{ i.status }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                      </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %} 

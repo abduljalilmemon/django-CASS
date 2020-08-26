@@ -1,0 +1,91 @@
+{% extends "info/blank.html" %}
+{% block content %}
+{% load static %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<div id="invoice">
+    <div class="invoice overflow-auto">
+        <div style="min-width: 600px">
+            <header>
+                <div class="row">
+                    <div class="col">
+                        <a>
+                            <img src="{% static '/info/img/cubus.png' %}" data-holder-rendered="true" />
+                            </a>
+                    </div>
+                    
+                </div>
+            </header>
+            <main>
+                <div class="row contacts">
+                    <div class="col invoice-to">
+                        <div class="text-gray-light">{{stu.username}}</div>
+                        <h2 class="invoice-id">{{stu.name}}</h2>
+                        <div class="address">Father Name: {{stu.fname}}</div>
+                    </div>
+                    <div class="col invoice-details">
+                        <h1 class="invoice-id">{{stu.classno}}</h1>
+                        <div class="date">{{stu.phone}}</div>
+                        <div class="date">{{ request.user.teacher.name}}, {{subj.subject}}</div>
+                    </div>
+                </div>
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th class="text-left" style="color:blueviolet;">Evalution</th>
+                            <th class="text-right" style="color:blueviolet;"></th>
+                            <th class="text-right" style="color:blueviolet;">Total Score</th>
+                            <th class="text-right" style="color:blueviolet;">Student Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in ad%}
+                        <tr>
+                            <td class="no">{{ forloop.counter }}</td>
+                            <td class="text-left">
+                                <h3><a>{{ i.name }}</a></h3>
+                            </td>
+                            <td class="unit"></td>
+                            <td class="qty" style="color:black;">{{ i.total_marks }}</td>
+                            <td class="total">{{ i.obtained }}</td>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                            <td class="no"></td>
+                            <td class="text-left">
+                                <h3><a>Attendance</a></h3>
+                                <a>Useful videos</a> 
+                                to improve your Javascript skills. Subscribe and stay tuned :)
+                                </td>
+                            <td class="unit"></td>
+                            <td class="qty" style="color:black;">{{t_att}}</td>
+                            <td class="total">{{t_prs}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2">{{ t_rw }}</td>
+                            <td>{{ t_to }}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div>Thank you!</div>
+                <div class="notices">
+                    <div>NOTICE:</div>
+                    <div class="notice">If find any problem contact your teacher</div>
+                </div>
+            </main>
+            <footer>
+                Invoice was created on a computer and is valid without the signature and seal.
+            </footer>
+        </div>
+        <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
+        <div></div>
+    </div>
+</div>
+{% endblock %} 
+      
