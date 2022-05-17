@@ -1,0 +1,68 @@
+{% extends "info/s_blank.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-12">
+    <section>
+      <header class="panel-heading tab-bg-info">
+        <ul class="nav nav-tabs">
+            {% for i in subj %}
+                {% if forloop.counter == 1 %}
+                <li class="active">
+                {% else %}
+                <li>
+                {% endif %}
+                <a data-toggle="tab" href="#{{i.subject}}"">
+                  {{ i.subject }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+      </header>
+      <div class="panel-body">
+        <div class="tab-content">
+            {% for i in subj%}
+                {% if forloop.counter == 1 %}
+                <div id={{i.subject}} class="tab-pane active">
+                {% else %}
+                <div id={{i.subject}} class="tab-pane">
+                {% endif %}
+                <section class="panel">
+                    <div class="panel-body bio-graph-info">
+                      <h1 style="text-indent: 1%; padding: 10px 0px 0px 20px; color: blanchedalmond; text-transform: uppercase;"><b>{{i.subject}}</b></h1>
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th style="text-align: center;">#</th>
+                            <th style="text-align: center;">Title</th>
+                            <th style="text-align: center;">Date</th>
+                            <th style="text-align: center;">Total Marks</th>
+                            <th style="text-align: center;">Obtained Marks</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for j in att %}
+                            {% for k in j%}
+                            {% if k.classi.subject == i.subject %} 
+                            <tr style="text-align: center;">
+                              <td>{{ forloop.counter }}</td>
+                              <td>{{ k.name }}</td>
+                              <td>{{ k.date }}</td>
+                              <td>{{ k.total_marks }}</td>
+                              <td>{{ k.obtained }}</td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                </section>
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %} 
+      

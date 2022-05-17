@@ -1,0 +1,86 @@
+{% extends "info/blank.html" %}
+{% block content %}
+<div class="row" >
+    <div class="col-lg-12" > 
+        <div class="tab-content">
+            <section class="panel">
+                <div class="panel-body bio-graph-info">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>8:30-9:25</td>
+                                {% for i in time %}
+                                    {% if i.classtime.s_time == s_t %}
+                                        <td>
+                                            <h5>{{i.classtime.day}}</h5>
+                                            <h5>{{i.subject}}</h5>
+                                            <h5>{{i.classtime.classname}}</h5>
+                                        </td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td>9:30-10:25</td>
+                                {% for i in time %}
+                                    {% if i.classtime.s_time == s_t1 %}
+                                        <td>
+                                            <h5>{{i.classtime.day}}</h5>
+                                            <h5>{{i.subject}}</h5>
+                                            <h5>{{i.classtime.classname}}</h5>
+                                        </td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td>10:25-11:00</td>
+                                <td></td>
+                                <td></td>
+                                <td>Break</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>11:00-11:55</td>
+                                {% for i in time %}
+                                    {% if i.classtime.s_time == s_t2 %}
+                                        <td>
+                                            <h5>{{i.classtime.day}}</h5>
+                                            <h5>{{i.subject}}</h5>
+                                            <h5>{{i.classtime.classname}}</h5>
+                                        </td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td>12:00-12:55</td>
+                                {% for i in time %}
+                                    {% if i.classtime.s_time == s_t3 %}
+                                        <td>
+                                            <h5>{{i.classtime.day}}</h5>
+                                            <h5>{{i.subject}}</h5>
+                                            <h5>{{i.classtime.classname}}</h5>
+                                        </td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <td>13:00-13:55</td>
+                                {% for i in time %}
+                                    {% if i.classtime.s_time == s_t4 %}
+                                        <td>
+                                            <h5>{{i.classtime.day}}</h5>
+                                            <h5>{{i.subject}}</h5>
+                                            <h5>{{i.classtime.classname}}</h5>
+                                        </td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %} 

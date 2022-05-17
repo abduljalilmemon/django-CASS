@@ -1,0 +1,99 @@
+{% extends "info/s_blank.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-12">
+    <section>
+      <header class="panel-heading tab-bg-info">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a data-toggle="tab" href="#profile">
+              <i class="icon_profile"></i>Profile
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#change-password">
+              <i class="icon_key"></i>Change Password
+            </a>
+          </li>
+        </ul>
+      </header>
+      <div class="panel-body">
+        <div class="tab-content">
+          <div id="profile" class="tab-pane active">
+            <section class="panel"> 
+              <div class="panel-body bio-graph-info">
+                <h1 style="text-indent: 1%; padding: 10px 0px 0px 20px; color: blanchedalmond; text-transform: uppercase;"><b>BioGraphy</b></h1>
+                <div class="row" style=" color: blanchedalmond;">
+                  <div class="bio-row">
+                    <p><span >Username </span>: {{request.user}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>Class </span>: {{request.user.student.classno}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>First Name </span>: {{request.user.student.name}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>Father Name </span>: {{request.user.student.fname}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>Gender </span>: {{request.user.student.sex}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>Address </span>: {{request.user.student.address}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>Birthday</span>: {{request.user.student.DOB}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>Fee </span>: {{request.user.student.fee}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>Mobile </span>: {{request.user.student.phone}}</p>
+                  </div>
+                  <h5 class="form-signin-heading" style="text-align: center;">{{ message }}</h5>
+                </div>
+              </div>
+            </section>
+          </div>
+            <div id="change-password" class="tab-pane">
+              <section class="panel">
+                <div class="panel-body bio-graph-info">
+                  <h1 style="text-indent: 1%; text-transform: uppercase;"><b>Change Password</b></h1>
+                  <form class="form-horizontal" role="form" method="POST" action="{% url 's_password' %}">
+                    <div class="form-group">
+                      <label class="col-lg-2 control-label">Old Password</label>
+                      <div class="col-lg-6">
+                        <input type="password" class="form-control round-input" name="old_pass" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-lg-2 control-label">New Password</label>
+                      <div class="col-lg-6">
+                        <input type="password"  class="form-control round-input" minlength="8" name="new_pass" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-lg-2 control-label">Confirm Password</label>
+                      <div class="col-lg-6">
+                        <input type="password"  class="form-control round-input" minlength="8" name="conf_pass" required>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-lg-offset-3 col-lg-10">
+                        <button class="btn btn-default" style="padding-left: 10%; padding-right: 10%;" type="submit">Change 
+                        </button>
+                        <h5 class="form-signin-heading">{{ message }}</h5>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </section>
+            </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %} 
+      

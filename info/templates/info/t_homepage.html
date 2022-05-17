@@ -1,0 +1,42 @@
+{% extends "info/blank.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-12">
+    <section class="panel">
+      <div class="panel-body">
+        <div class="tab-content">
+          <div id="recent-activity" class="tab-pane active">
+            <div class="profile-activity">
+              {% for ann in ancmnt %}
+              <div class="act-time">
+                <div class="activity-body act-in">
+                  <span class="arrow"></span>
+                  <div class="text">
+                    <p class="attribution" style="color:#d9ff00">
+                      <a style="font-weight: 1000; 
+                                font-family: Arial, Helvetica, sans-serif;
+                                color: rgb(204, 201, 159);
+                      ">{{ ann.title }}</a>
+                      <a style="color: rgb(223, 167, 167);">by, {{ ann.username }}</a>
+                      {{ann.date_posted }}
+                    </p>
+                    <p style="color:wheat;">{{ann.content}}</p>
+                  </div>
+                </div>
+              </div>
+              {% if ann.username == request.user %}
+                    <form action="{% url 't_ancmnt' %}" method="POST">
+                      <div class="col-lg-offset-10">
+                      <button class="btn btn-default" style="background-color: rgb(153, 103, 182); padding-left: 70px; padding-right: 70px" name="ide" value={{ann.id}}>Delete</button>
+                      </div>
+                    </form>
+                    {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %} 

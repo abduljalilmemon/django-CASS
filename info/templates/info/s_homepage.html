@@ -1,0 +1,35 @@
+{% extends "info/s_blank.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-lg-12">
+    <section class="panel">
+      <div class="panel-body">
+        <div class="tab-content">
+          <div id="recent-activity" class="tab-pane active">
+            <div class="profile-activity">
+              {% for ann in ancmnt %}
+              <div class="act-time">
+                <div class="activity-body act-in">
+                  <span class="arrow"></span>
+                  <div class="text">
+                    <p class="attribution" style="color:#d9ff00">
+                      <a style="font-weight: 1000; 
+                                font-family: Arial, Helvetica, sans-serif;
+                                color: rgb(204, 201, 159);
+                      ">{{ ann.title }}</a>
+                      <a style="color: rgb(223, 167, 167);">by, {{ ann.username }}</a>
+                      {{ann.date_posted }}
+                    </p>
+                    <p style="color:wheat;">{{ann.content}}</p>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %} 

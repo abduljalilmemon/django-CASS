@@ -1,0 +1,93 @@
+{% extends "info/blank.html" %}
+{% block content %}
+  <div class="row"> 
+    <div class="col-lg-12" style="padding: 18px 21px 2px 21px;">
+      <header class="panel-heading tab-bg-info">
+        <ul class="nav nav-tabs">
+            {% for i in class %}
+                {% if forloop.counter == 1 %}
+                <li class="active">
+                {% else %}
+                <li>
+                {% endif %}
+                <a data-toggle="tab" href="#{{i}}">
+                  {{ i }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+      </header>
+      <div class="panel-body">
+        <div class="tab-content">
+          {% for k in class %}
+            {% if forloop.counter == 1 %}
+              <div id={{k}} class="tab-pane active">
+            {% else %}
+              <div id={{k}} class="tab-pane">
+            {% endif %}
+            
+            
+            <form action="{% url 't_marks' %}" method="POST">
+            <div class="col-lg-7" style="padding: 1%;">
+              <input type="text" class="form-control" name="topic" style="text-transform: capitalize;" placeholder="Title e.g Monthly Test-1" required>
+            </div>
+            <div class="col-lg-2" style="padding: 1%;">
+              <input type="date" class="form-control" id="day" name="day" required>
+            </div>
+            <div class="col-lg-3" style="padding: 1%;">
+              <input type="number" class="form-control"  name="Obtained" placeholder="Total Marks" min="1" max="500" required>
+            </div>
+            <section class="panel">
+              <div class="panel-body bio-graph-info">
+                <table class="table" >
+                  <thead>
+                    <tr>
+                      <th scope="col" style="text-align: center;">Username</th>
+                      <th scope="col" style="text-align: center;">Name</th>
+                      <th scope="col" style="text-align: center;">Obtained Marks</th>
+                    </tr>
+                  </thead>
+                  <tbody>    
+                    {% for j in st %}
+                      {% for i in j %}
+                        {% if i.classno == k %}
+                        <tr>
+                          <td style="text-align: center;">{{i.username}}</td>
+                          <td style="text-align: center;">{{i.name}}</td>
+                          <td style="text-align: center;">
+                            <div class="btn-group" data-toggle="buttons">
+                              {% if i.classno == k %}
+                              <input type="number" name="{{i.username}}" min="0" max="500" style="
+                                                        background-color: rgb(197, 197, 204);
+                                                          border-radius: 12px;" required>
+                              {% else %}
+                              <input type="number" name="{{i.username}}" min="0" max="500" style="
+                                                        background-color: rgb(197, 197, 204);
+                                                          border-radius: 12px;">
+                              {% endif %}
+                            </div>
+                          </td>
+                        </tr>
+                        {% endif %}
+                      {% endfor %}
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section style="display: inline-block;
+              padding: 6px;
+              width: 100%;">
+              <div class="col-lg-offset-4 col-lg-9">
+                <button type="submit" style="padding-left: 15%; border-top-left-radius: 5px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; padding-right: 15%;" class="btn btn-primary">Upload</button>
+              </div>
+              <h5 class="form-signin-heading" style="text-align: center; padding: 30px 70px 15px 10px;">{{ message }}</h5>
+            </section>
+          </form>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div> 
+{% endblock %} 
