@@ -16,8 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
-admin.site.site_header = 'College Automation and Scheduling System'  
-admin.site.site_title = 'CASS'   
+admin.site.site_header = 'College Management System'  
+admin.site.site_title = 'CMS'   
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('info.urls')),

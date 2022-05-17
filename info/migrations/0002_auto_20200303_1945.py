@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import phone_field.models
+import phonenumber_field.modelfields
 
 
 class Migration(migrations.Migration):
@@ -77,7 +77,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='student',
             name='phone',
-            field=phone_field.models.PhoneField(blank=True, help_text='Contact phone number', max_length=31),
+            field=phonenumber_field.modelfields.PhoneNumberField(blank=True, help_text='Contact phone number', max_length=31),
         ),
         migrations.AddField(
             model_name='teacher',
@@ -88,7 +88,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='teacher',
             name='phone',
-            field=phone_field.models.PhoneField(blank=True, help_text='Contact phone number', max_length=31),
+            field=phonenumber_field.modelfields.PhoneNumberField(blank=True, help_text='Contact phone number', max_length=31),
         ),
         migrations.AddField(
             model_name='teacher',
